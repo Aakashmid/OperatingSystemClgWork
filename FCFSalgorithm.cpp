@@ -14,6 +14,7 @@ struct Process
     int waiting_time;    // Waiting time
 };
 
+
 // Function to calculate completion, turnaround and waiting times
 void calculateTimes(vector<Process> &processes)
 {
@@ -31,7 +32,7 @@ void calculateTimes(vector<Process> &processes)
         }
     }
 
-    // Calculate times for each process
+
     for (auto &process : processes)
     {
         // If current time is less than arrival time, CPU will be idle
@@ -40,7 +41,7 @@ void calculateTimes(vector<Process> &processes)
             current_time = process.arrival_time;
         }
 
-        // Calculate completion time
+
         process.completion_time = current_time + process.burst_time;
 
         // Calculate turnaround time (completion time - arrival time)
@@ -54,7 +55,7 @@ void calculateTimes(vector<Process> &processes)
     }
 }
 
-// Function to display the process schedule and average times
+// Function to display the processes after  schedule and average  turnaround and waiting times
 void displaySchedule(const vector<Process> &processes)
 {
     float avg_turnaround_time = 0;
@@ -93,10 +94,9 @@ void displaySchedule(const vector<Process> &processes)
 int main()
 {
     vector<Process> processes = {
-        {1, 0, 6, 0, 0, 0}, // Process 1: arrival time = 0, burst time = 6
-        {2, 2, 4, 0, 0, 0}, // Process 2: arrival time = 2, burst time = 4
-        {3, 4, 8, 0, 0, 0}, // Process 3: arrival time = 4, burst time = 8
-        {4, 6, 3, 0, 0, 0}  // Process 4: arrival time = 6, burst time = 3
+        {1, 0, 18, 0, 0, 0}, // Process 1: arrival time = 0, burst time = 18
+        {2, 1, 2, 0, 0, 0}, // Process 2: arrival time = 1, burst time = 2
+        {3, 2, 3, 0, 0, 0}, // Process 3: arrival time = 2, burst time = 3
     };
 
     calculateTimes(processes);

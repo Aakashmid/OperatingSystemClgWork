@@ -3,7 +3,7 @@
 using namespace std;
 
 struct Process{
-        int id;
+        int pid;
         int arrival_time;
         int burst_time;
         int finish_time;
@@ -11,8 +11,8 @@ struct Process{
         int waiting_time;
 };
 
-// calculate and print average waiting and turnaround time
-void CalculateAvgWT_TA(vector<Process> &processes){
+// schedule proccess
+void FCFSScheduling(vector<Process> &processes){
         // sort processes by arrival time
          for (int i = 0; i < processes.size(); i++){
                 for (int j = i + 1; j < processes.size(); j++){
@@ -23,8 +23,6 @@ void CalculateAvgWT_TA(vector<Process> &processes){
         }
 
 
-        float avg_turnArT=0;  // average turnaround time
-        float avg_waitingT=0; // average waiting time
         int current_time=0;
         for(int i=0;i<processes.size();i++){
                 Process &p=processes[i];
@@ -35,18 +33,42 @@ void CalculateAvgWT_TA(vector<Process> &processes){
                 current_time=p.finish_time;
                 p.turnaround_time= p.finish_time-p.arrival_time;
                 p.waiting_time= p.turnaround_time-p.burst_time;
-                avg_waitingT+=p.waiting_time;
-                avg_turnArT+=p.turnaround_time;
         }
 
-        cout<<"Average Turnaround Time is : "<< avg_turnArT/processes.size()<<endl;
-        cout<<"Average Waiting Time si : "<<avg_waitingT/processes.size()<<endl;
 }
 
+
+// function to display result
+void printSchedulingResults(const vector<Process>& processes) {
+    cout<<"FCFS scheduling result :- \n";
+    cout << "PID\tArrival\tBurst\tCompletion\tWaiting\tTurnaround\n";
+    for (const auto& p : processes) {
+        cout << p.pid << "\t"
+                  << p.arrival_time << "\t"
+                  << p.burst_time << "\t"
+                  << p.finish_time << "\t\t"
+                  << p.waiting_time << "\t"
+                  << p.turnaround_time << "\n";
+    }
+
+    //  Calculate average waiting and turnaround time
+    double avgWait = 0, avgTurn = 0;
+    for (const auto& p : processes) {
+        avgWait += p.waiting_time;
+        avgTurn += p.turnaround_time;
+    }
+
+    avgWait /= processes.size();
+    avgTurn /= processes.size();
+
+    std::cout << "Average Waiting Time: " << avgWait << "\n";
+    std::cout << "Average Turnaround Time: " << avgTurn << "\n";
+}
 
 
 int main(){
         vector<Process> processes ={{1,0,18},{2,1,2},{3,2,3}};
-        CalculateAvgWT_TA(processes); 
+        FCFSScheduling(processes); 
+	printSchedulingResults(processes);
         return 0;
 }

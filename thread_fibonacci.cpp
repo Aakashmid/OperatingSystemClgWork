@@ -3,8 +3,10 @@
 using namespace std;
 
 
+int limit;
+
 void* fibonacci(void* arg){
-	int limit = *(int*)arg;  // Convert void* to int*
+	//int limit = *(int*)arg;  // Convert void* to int*
 	int first=0;
 	int second=1;
 	int sum=0;
@@ -21,7 +23,6 @@ void* fibonacci(void* arg){
 
 int main(){
 	cout<<"Enter limit of fibonacci series : ";
-	int limit;
 	cin>>limit;
 	pthread_t thread;
 	pthread_create(&thread,NULL,fibonacci,&limit);

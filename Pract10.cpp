@@ -24,13 +24,11 @@ bool sortByPriority(Process a, Process b){
 	return a.arrival_time < b.arrival_time;
 }
 
-void calculateTAT_WT(vector<Process> &processes) // calculate turnaround and and waiting time 
+
+void NonPreempPriorityScheduling(vector<Process> &processes) // calculate turnaround and and waiting time 
 {	
 	int current_time= 0;
 	int completed_processes=0;
-	float total_waiting_time=0;
-	float total_turnaround_time=0;
-
 
 	while(completed_processes<processes.size()){
 		int index=-1; // to store index of highest priority process arrived ;
@@ -54,21 +52,49 @@ void calculateTAT_WT(vector<Process> &processes) // calculate turnaround and and
                         p.turnaround_time = p.finish_time - p.arrival_time;
                         p.isCompleted = true;
                         p.waiting_time = p.turnaround_time - p.burst_time;
-			total_waiting_time+=p.waiting_time;
-			total_turnaround_time=p.turnaround_time;
                         completed_processes++;
 		}
 	}
-	cout<<"Average waiting time is : "<<total_waiting_time/processes.size()<<endl;;
-	cout<<"Average turnaround time is : "<< total_turnaround_time/processes.size()<<endl;
+
 }
 
 
 
+// Function to display the scheduling results
+void printSchedulingResults(const vector<Process>& processes) {
+    cout << "Non Preemptive Priority scheduling result :-\n\n";
+    cout << "PID\tArrival\tBurst\tCompletion\tWaiting\tTurnaround\n";
+
+    for (const auto& p : processes) {
+        cout << p.pid << "\t"
+             << p.arrival_time << "\t"
+             << p.burst_time << "\t"
+             << p.finish_time << "\t\t"
+             << p.waiting_time << "\t"
+             << p.turnaround_time << "\n";
+    }
+
+    // Calculate average waiting and turnaround time
+    double avg_wait = 0, avg_turn = 0;
+    for (const auto& p : processes) {
+        avg_wait += p.waiting_time;
+        avg_turn += p.turnaround_time;
+    }
+
+    avg_wait /= processes.size();
+    avg_turn /= processes.size();
+
+    cout << "\nAverage Waiting Time: " << avg_wait << "\n";
+    cout << "Average Turnaround Time: " << avg_turn << "\n";
+}
+
 
 int main(){
-	vector<Process> processes = {{1, 2, 4,3}, {2, 5, 3,1}, {3, 0, 2,4}, {4, 5, 1}, {5, 2, 3,2}}; // id , arrival time, burst time
-	calculateTAT_WT(processes);
+	vector<Process> processes = {{1, 0, 2,2}, {2, 1, 1,1}, {3, 2, 8,4}, {4, 3, 4,2}, {5, 4, 5,3}}; // id , arrival time, burst time
+	NonPreempPriorityScheduling(processes);
+	
+	printSchedulingResults(processes);
+
 	return 0;
 }
 

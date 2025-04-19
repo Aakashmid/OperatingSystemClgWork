@@ -2,12 +2,11 @@
 #include <vector>
 #include <algorithm>
 #include <climits>
-#include<iomanip>
 using namespace std;
 
 struct Process
 {
-    int id;
+    int pid;
     int arrival_time;
     int burst_time;
     int finish_time;
@@ -16,6 +15,7 @@ struct Process
     bool isCompleted = false;
 };
 
+// function for sort condition
 bool sortByArrivalTime(Process a, Process b)
 {
     if (a.arrival_time == b.arrival_time)
@@ -27,10 +27,10 @@ bool sortByArrivalTime(Process a, Process b)
 
 
 // calculate and print average waiting and turnaround time
-void CalculateTimings(vector<Process> &processes)
+void SjfScheduling(vector<Process> &processes)
 {
 
-        sort(processes.begin(), processes.end(), sortByArrivalTime); // Sort by arrival time
+        sort(processes.begin(), processes.end(), sortByArrivalTime); // Sort processes  by arrival time and burst time 
         int current_time = 0;
         int completedProcesses = 0;
 
@@ -67,65 +67,45 @@ void CalculateTimings(vector<Process> &processes)
 }
 
 
+// Function to display the scheduling results
+void printSchedulingResults(const vector<Process>& processes) {
+    cout << "Non Preemptive SJF scheduling result :-\n\n";
+    cout << "PID\tArrival\tBurst\tCompletion\tWaiting\tTurnaround\n";
 
-
-void DisplaySchedule(const vector<Process> &processes)
-{
-    float avg_turnaround_time = 0;
-    float avg_waiting_time = 0;
-
-    cout << "\nProcess Schedule:" << endl;
-    cout << setw(5) << "PID"
-         << setw(10) << "Arrival"
-         << setw(10) << "Burst"
-         << setw(15) << "Finish"
-         << setw(15) << "Turnaround"
-         << setw(10) << "Waiting" << endl;
-    cout << string(65, '-') << endl;
-
-    for (const auto &process : processes)
-    {
-        cout << setw(5) << process.id
-             << setw(10) << process.arrival_time
-             << setw(10) << process.burst_time
-             << setw(15) << process.finish_time
-             << setw(15) << process.turnaround_time
-             << setw(10) << process.waiting_time << endl;
-
-        avg_turnaround_time += process.turnaround_time;
-        avg_waiting_time += process.waiting_time;
+    for (const auto& p : processes) {
+        cout << p.pid << "\t"
+             << p.arrival_time << "\t"
+             << p.burst_time << "\t"
+             << p.finish_time << "\t\t"
+             << p.waiting_time << "\t"
+             << p.turnaround_time << "\n";
     }
 
-    avg_turnaround_time /= processes.size();
-    avg_waiting_time /= processes.size();
+    // Calculate average waiting and turnaround time
+    double avg_wait = 0, avg_turn = 0;
+    for (const auto& p : processes) {
+        avg_wait += p.waiting_time;
+        avg_turn += p.turnaround_time;
+    }
 
-    cout << "\nAverage Turnaround Time: " <<avg_turnaround_time << endl;
-    cout << "Average Waiting Time: " << avg_waiting_time << endl;
+    avg_wait /= processes.size();
+    avg_turn /= processes.size();
+
+    cout << "\nAverage Waiting Time: " << avg_wait << "\n";
+    cout << "Average Turnaround Time: " << avg_turn << "\n";
 }
+
 
 
 int main()
 {
-    // vector<Process> processes = {{1, 2, 4}, {2, 5, 3}, {3, 0, 2}, {4, 5, 1}, {5, 2, 3}}; // id , arrival time, burst time
-    cout << "### Non-preemptive SJF Algorithm ### \n \n";
-    int n;
-    cout << "Enter total processes number : ";
-    cin >> n;
-    vector<Process> processes;
 
-    // taking processes input
-    for (int i = 0; i < n; i++)
-    {
-        int id, arrival_time, burst_time;
-        cout << "Enter process " << i + 1 << " arrival time : ";
-        cin >> arrival_time;
-        cout << "Enter process " << i + 1 << " burst time : ";
-        cin >> burst_time;
-        processes.push_back({i + 1, arrival_time, burst_time});
-    }
-    CalculateTimings(processes);
 
-    // display updated processes data
-    DisplaySchedule(processes);
+    vector<Process> processes = {{1, 2, 4}, {2, 5, 3}, {3, 0, 2}, {4, 5, 1}, {5, 2, 3}}; // id , arrival time, burst time
+
+    SjfScheduling(processes);
+
+    printSchedulingResults(processes);
+
     return 0;
 }

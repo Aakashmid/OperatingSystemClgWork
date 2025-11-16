@@ -1,0 +1,58 @@
+<!-- Problem :   Create an HTML document with following formatting-Bold, Italics, Underline, Colors, Headings, Title, Font and Font Width, Background, Paragraph, Line Breaks, Horizontal Link, Marquee text.-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formatting Demo</title> <!-- Title -->
+    <style>
+        body {
+            background: #f5f7ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .colored {
+            color: #d14;
+        }
+
+        .wide {
+            font-weight: 700;
+        }
+
+        /* Font weight */
+        hr {
+            margin: 16px 0;
+        }
+
+        marquee {
+            background: #ffe9a8;
+            padding: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <marquee behavior="scroll" direction="left">This is marquee text</marquee> <!-- Marquee text -->
+
+    <h1>Main Heading</h1> <!-- Headings -->
+    <h2>Sub Heading</h2>
+
+    <p>
+        <b>Bold</b>, <i>Italic</i>, <u>Underline</u>,
+        <span class="colored">Colored text</span>,
+        <span style="font-family:'Georgia', serif;">Custom Font</span>,
+        <span class="wide">Font Weight</span>.
+    </p>
+
+    <p>Paragraph with a line break<br>right here.</p> <!-- Paragraph + Line Break -->
+
+    <hr> <!-- Horizontal line -->
+
+    <p style="background:#e6ffed;">Inline background on this paragraph.</p> <!-- Background -->
+
+    <p><a href="https://youtube.com" target="_blank">A link</a></p> <!-- Link -->
+</body>
+
+</html>

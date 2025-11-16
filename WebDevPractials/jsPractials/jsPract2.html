@@ -1,0 +1,56 @@
+<!-- Question 2: 
+Create a student registration form . Create functions to perform  the following checks
+
+a. Student id is a 10-digit alphanumeric value
+b. Name should be an alphabetical value (String)
+c.Non-empty fields like Age
+ 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label { display: block; margin-top: 10px; }
+    input { padding: 5px; width: 250px; }
+    .error { color: red; font-size: 0.9em; }
+  </style>
+  <script src="pract2.js" defer></script>
+</head>
+<body>
+
+  <h2>Student Registration Form</h2>
+
+  <form id="registrationForm" onsubmit="return validateForm()">
+    <label>
+      Student ID:
+      <input type="text" id="studentId" placeholder="10-digit alphanumeric">
+      <span class="error" id="idError"></span>
+    </label>
+
+    <label>
+      Name:
+      <input type="text" id="studentName" placeholder="Alphabetical only">
+      <span class="error" id="nameError"></span>
+    </label>
+
+    <label>
+      Age:
+      <input type="number" id="studentAge" placeholder="Enter age">
+      <span class="error" id="ageError"></span>
+    </label>
+
+    <br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <p id="successMessage" style="color: green;"></p>
+
+  <script>
+   
+  </script>
+
+</body>
+</html>

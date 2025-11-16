@@ -1,0 +1,70 @@
+<!-- Question 1 : 
+Write event-driven programs in JavaScript for the following
+a. Enter a number and on click of a button print its factors.
+b. Print the smallest of five numbers entered by the user
+c. Find the factorial of a number entered by the user.
+d. Take a number in an input text box, on click of a button, display its multiplication table
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Event-Driven JavaScript Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    div {
+      margin-bottom: 30px;
+    }
+
+    input {
+      margin: 5px;
+    }
+  </style>
+  <script src="pract1.js"></script>
+</head>
+
+<body>
+
+  <!-- a. Print factors of a number -->
+  <div>
+    <h2>a. Print Factors</h2>
+    <input type="number" id="numFactors" placeholder="Enter a number">
+    <button onclick="printFactors()">Get Factors</button>
+    <p id="factorsResult"></p>
+  </div>
+
+  <!-- b. Find smallest of five numbers -->
+  <div>
+    <h2>b. Find Smallest of Five Numbers</h2>
+    <input type="number" class="numInput" placeholder="Number 1">
+    <input type="number" class="numInput" placeholder="Number 2">
+    <input type="number" class="numInput" placeholder="Number 3">
+    <input type="number" class="numInput" placeholder="Number 4">
+    <input type="number" class="numInput" placeholder="Number 5">
+    <button onclick="findSmallest()">Find Smallest</button>
+    <p id="smallestResult"></p>
+  </div>
+
+  <!-- c. Find factorial of a number -->
+  <div>
+    <h2>c. Find Factorial</h2>
+    <input type="number" id="numFactorial" placeholder="Enter a number">
+    <button onclick="findFactorial()">Get Factorial</button>
+    <p id="factorialResult"></p>
+  </div>
+
+  <!-- d. Display multiplication table -->
+  <div>
+    <h2>d. Multiplication Table</h2>
+    <input type="number" id="numTable" placeholder="Enter a number">
+    <button onclick="showTable()">Show Table</button>
+    <ul id="tableResult"></ul>
+  </div>
+</body>
+
+</html>

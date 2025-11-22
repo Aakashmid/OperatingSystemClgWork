@@ -1,75 +1,65 @@
-<!-- Question 3: - Create a form containing various HTML elements and perform appropriate validations on each of them while submitting the form
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Validated Registration Form</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    label { display: block; margin-top: 10px; }
-    input, select, textarea { width: 300px; padding: 5px; margin-top: 5px; }
-    .error { color: red; font-size: 0.9em; }
-  </style>
+  <link rel="stylesheet" href="pract3.css">
   <script src="pract3.js" defer></script>
 </head>
+
 <body>
 
-  <h2>Student Registration Form</h2>
+  <div class="container">
+    <h2>Student Registration</h2>
 
-  <form id="registrationForm" onsubmit="return validateForm()">
-    <!-- Text input -->
-    <label>
-      Full Name:
-      <input type="text" id="name">
-      <span class="error" id="nameError"></span>
-    </label>
+    <form id="registrationForm" onsubmit="return validateForm()">
+      
+      <label>
+        Full Name:
+        <input type="text" id="name">
+        <span class="error" id="nameError"></span>
+      </label>
 
-    <!-- Email input -->
-    <label>
-      Email:
-      <input type="email" id="email">
-      <span class="error" id="emailError"></span>
-    </label>
+      <label>
+        Email:
+        <input type="email" id="email">
+        <span class="error" id="emailError"></span>
+      </label>
 
-    <!-- Number input -->
-    <label>
-      Age:
-      <input type="number" id="age">
-      <span class="error" id="ageError"></span>
-    </label>
+      <label>
+        Age:
+        <input type="number" id="age">
+        <span class="error" id="ageError"></span>
+      </label>
 
-    <!-- Select dropdown -->
-    <label>
-      Gender:
-      <select id="gender">
-        <option value="">Select</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
-      <span class="error" id="genderError"></span>
-    </label>
+      <label>
+        Gender:
+        <select id="gender">
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <span class="error" id="genderError"></span>
+      </label>
 
-    <!-- Checkbox -->
-    <label>
-      <input type="checkbox" id="terms">
-      I agree to the terms and conditions
+      <div class="checkbox-row">
+        <input type="checkbox" id="terms">
+        <label for="terms" style="font-weight: normal; margin:0;">I agree to the terms and conditions</label>
+      </div>
       <span class="error" id="termsError"></span>
-    </label>
 
-    <!-- Textarea -->
-    <label>
-      Comments:
-      <textarea id="comments" rows="4"></textarea>
-    </label>
+      <label>
+        Comments:
+        <textarea id="comments" rows="4"></textarea>
+      </label>
 
-    <br><br>
-    <button type="submit">Submit</button>
-  </form>
+      <button type="submit">Submit</button>
 
-  <p id="successMessage" style="color: green;"></p>
+    </form>
+
+    <p id="successMessage" style="color: green;"></p>
+  </div>
 
 </body>
 </html>

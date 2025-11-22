@@ -1,1 +1,1 @@
-Operating System and Web Developement basic practials
+Operating System and Web Developement college works 

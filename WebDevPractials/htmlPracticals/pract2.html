@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>Lists, Images, and Links</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.5; margin: 24px; }
-    img { max-width: 200px; height: auto; display: block; margin: 8px 0; }
-    nav a { margin-right: 12px; }
-    section { margin: 20px 0; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      margin: 24px;
+    }
+
+    img {
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 8px 0;
+    }
+
+    nav a {
+      margin-right: 12px;
+    }
+
+    section {
+      margin: 20px 0;
+    }
   </style>
 </head>
+
 <body>
   <nav>
     <!-- Internal links -->
     <a href="#fruits">Go to Fruits</a>
-    <a href="#items">Go to Steps</a>
+    <a href="#items">Go to Items</a>
     <a href="#gallery">Go to Gallery</a>
   </nav>
 
@@ -38,13 +56,20 @@
 
   <section id="gallery">
     <h2>Images</h2>
-    <!-- Local image example (replace with your path) -->
-    <img src="images/sample.jpg" alt="Local sample image" />
-    <!-- External image -->
-    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Unsplash sample image 1" />
-    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Unsplash sample image 2" />
+    <div  style="display: flex; gap: 20px;">
+      <div class="">
+        <!-- Local image (internal linking )-->
+        <p class="">Internal image </p>
+        <img src="sample.png" alt="Local sample image" />
+      </div>
+      <div class="">
+        <!-- External image -->
+        <p class="">External image </p>
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Unsplash sample image 1" />
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Unsplash sample image 2" />
+      </div>
+    </div>
 
-    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Local sample image 3" />
   </section>
 
   <section id="links">
@@ -52,7 +77,8 @@
     <!-- Internal link -->
     <p>Back to the <a href="#fruits">Fruits section</a>.</p>
     <!-- External link -->
-    <p>Visit <a href="https://developer.mozilla.org/" target="_blank" >MDN Web Docs</a> for references.</p>
+    <p>Visit <a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a> for references.</p>
   </section>
 </body>
+
 </html>
